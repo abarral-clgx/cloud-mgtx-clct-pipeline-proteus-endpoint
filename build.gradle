@@ -1,0 +1,51 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'com.commercehub.gradle.plugin.avro' version '0.9.1'
+	id 'net.researchgate.release' version '2.6.0'
+	id 'maven'
+	id 'java'
+}
+
+group = 'com.cloud-mgtx-clct-clct-pipeline'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+ext {
+	kafkaStarterVersion = "1.0.7-RELEASE"
+	avroPojosVersion = "0.68.153-SNAPSHOT"
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	maven { url "http://packages.confluent.io/maven/" }
+	maven { url "https://repo.corelogic.net/nexus/content/groups/m2/" }
+	maven { url "https://repo.corelogic.net/nexus/content/repositories/idc-repo-releases" }
+
+	mavenCentral()
+}
+
+dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation 'com.corelogic.idap.starters:idap-scs-kerberos-config-starter:1.0.0-RELEASE'
+	implementation("com.corelogic.idap.starters:idap-kafka-service-starter:${kafkaStarterVersion}")
+	implementation("com.corelogic.idap.avro.pojos:idap-pipeline-avro-pojos:${avroPojosVersion}")
+	compile('com.corelogic.clp.shared-components:clp-logging:1.5.1')
+
+	compileOnly("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.kafka:spring-kafka-test")
+	testCompileOnly("org.projectlombok:lombok")
+	testAnnotationProcessor("org.projectlombok:lombok")
+}
+
+test {
+	useJUnitPlatform()
+}
