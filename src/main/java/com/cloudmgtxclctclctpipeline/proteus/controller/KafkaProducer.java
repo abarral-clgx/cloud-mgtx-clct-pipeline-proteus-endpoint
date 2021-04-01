@@ -1,15 +1,14 @@
 package com.cloudmgtxclctclctpipeline.proteus.controller;
 
 import com.cloudmgtxclctclctpipeline.proteus.domain.Orders;
-import com.corelogic.idap.starters.idapkafkaservicestarter.service.KafkaService;
+
+import com.corelogic.ebs.billing.event.pipeline.starter.service.KafkaService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-//import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class KafkaProducer {
 
-    private KafkaService kafkaService;
+    private final KafkaService kafkaService;
 
     @PostMapping("/orders")
     public ResponseEntity postOrderAssigned(@RequestBody String proteusEvent) throws JsonProcessingException {
@@ -32,7 +31,7 @@ public class KafkaProducer {
 
         try {
 
-            kafkaService.send(order, kafkaTopic);
+            kafkaService.sendMessageAsync(order);
 
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(order);
         }

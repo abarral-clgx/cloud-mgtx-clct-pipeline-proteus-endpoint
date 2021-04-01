@@ -1,0 +1,11 @@
+
+kafka-pipeline:
+  kafka-topic: [your-kafka-topic]
+  schema-registry-url: [your-registry-url]
+  kafka-brokers: [your-kafka-brokers]
+  principal: [your-principal]
+  keytab-location: [your-keytab-location]
+  keytab-file-in-base64: [your-keytab-file-in-base64]
+  truststore-file-in-base64: [your-truststore-file-in-base64]
+  truststore-location: [your-truststore-location]
+  truststore-password: [your-truststore-password]
