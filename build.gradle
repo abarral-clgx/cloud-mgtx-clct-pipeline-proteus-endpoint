@@ -25,7 +25,7 @@ configurations {
 repositories {
 	maven { url "http://packages.confluent.io/maven/" }
 	maven { url "https://repo.corelogic.net/nexus/content/groups/m2/" }
-	maven { url "https://repo.corelogic.net/nexus/content/repositories/idc-repo-releases" }
+	maven { url "https://repo.corelogic.net/nexus/content/repositories/idap-release/"  }
 
 	mavenCentral()
 }
