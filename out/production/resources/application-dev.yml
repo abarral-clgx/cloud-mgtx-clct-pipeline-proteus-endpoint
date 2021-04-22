@@ -1,0 +1,11 @@
+
+kafka-pipeline:
+  kafka-topic: orders
+  schema-registry-url: https://dev-kafka-blue-registry.kafka.dev.cloud.clgxdata.com:8081
+  kafka-brokers: dev-kafka-blue-broker-1.kafka.dev.cloud.clgxdata.com:9093,dev-kafka-blue-broker-2.kafka.dev.cloud.clgxdata.com:9093,dev-kafka-blue-broker-3.kafka.dev.cloud.clgxdata.com:9093,dev-kafka-blue-broker-4.kafka.dev.cloud.clgxdata.com:9093,dev-kafka-blue-broker-5.kafka.dev.cloud.clgxdata.com:9093,dev-kafka-blue-broker-6.kafka.dev.cloud.clgxdata.com:9093
+  principal: dev-cld-mgtx-clc-svc
+  keytab-location: C:\proteus-secrets\temp\dev-cld-mgtx-clc-svc.keytab
+  keytab-file-in-base64: BQIAAABZAAEAEklEQVAuQ09SRUxPR0lDLkNPTQAUZGV2LWNsZC1tZ3R4LWNsYy1zdmMAAAABAAAAAAMAEgAgrAO1nmjYTc+CfwLj5ozMbIatVZ8V9a+d1ooePxH4d+0=
+  truststore-file-in-base64: BQIAAABZAAEAEklEQVAuQ09SRUxPR0lDLkNPTQAUZGV2LWNsZC1tZ3R4LWNsYy1zdmMAAAABAAAAAAMAEgAgrAO1nmjYTc+CfwLj5ozMbIatVZ8V9a+d1ooePxH4d+0=
+  truststore-location: c:\proteus-secrets\temp\dev-client.truststore.jks
+  truststore-password: r1ufh9jKB5ieRVFHuQQxyYU6P

@@ -1,0 +1,8 @@
+com/cloudmgtxclctclctpipeline/proteus/ProteusApplicationTests.java
+ com.cloudmgtxclctclctpipeline.proteus.ProteusApplicationTests
+com/cloudmgtxclctclctpipeline/proteus/controller/Code64.java
+ com.cloudmgtxclctclctpipeline.proteus.controller.Code64
+com/cloudmgtxclctclctpipeline/proteus/controller/KafkaProducerTest.java
+ com.cloudmgtxclctclctpipeline.proteus.controller.KafkaProducerTest
+com/cloudmgtxclctclctpipeline/proteus/controller/ProteusEventsControllerIntegrationTest.java
+ com.cloudmgtxclctclctpipeline.proteus.controller.ProteusEventsControllerIntegrationTest
