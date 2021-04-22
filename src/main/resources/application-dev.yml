@@ -1,3 +1,4 @@
+
 kafka-pipeline:
   kafka-topic: orders
   schema-registry-url: https://dev-kafka-blue-registry.kafka.dev.cloud.clgxdata.com:8081

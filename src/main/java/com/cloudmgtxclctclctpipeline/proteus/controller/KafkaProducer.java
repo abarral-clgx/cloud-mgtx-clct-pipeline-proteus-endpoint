@@ -1,7 +1,6 @@
 package com.cloudmgtxclctclctpipeline.proteus.controller;
 
-import com.cloudmgtxclctclctpipeline.proteus.domain.Orders;
-
+import com.corelogic.clp.orders.dto.Orders;
 import com.corelogic.ebs.billing.event.pipeline.starter.service.KafkaService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,25 +20,28 @@ public class KafkaProducer {
     private final KafkaService kafkaService;
 
     @PostMapping("/orders")
-    public ResponseEntity postOrderAssigned(@RequestBody String proteusEvent) throws JsonProcessingException {
+    public String postOrderAssigned(@RequestBody String proteusEvent) throws JsonProcessingException {
 
-        String kafkaTopic = "orders";
-
-        Orders order = new ObjectMapper()
-                            .readerFor(Orders.class)
-                            .readValue(proteusEvent);
+        Orders orders = Orders.newBuilder()
+                .setAppraisedValue(100.00)
+                .setClientId("clientID")
+                .setSourceClientId("SourceClientID")
+                .setEventId("EventId")
+                .setComplexityScore(200)
+                .setFolderId("Folderid")
+                .setLoanNumber("LoanNumber")
+                .setSourceId("SourceId")
+                .setCorrelationId("CorrelationId")
+                .setDocumentId("DocumentId")
+                .build();
 
         try {
-
-            kafkaService.sendMessageAsync(order);
-
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body(order);
+            kafkaService.sendMessageAsync(orders);
+            return "Ok";
         }
         catch ( Exception e ) {                         // (KafkaServiceException e) {
             log.error("Failed: To Send message", e);
-//            throw new RuntimeException(e);
-
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(order);
+            return "Failed";
         }
     }
 }

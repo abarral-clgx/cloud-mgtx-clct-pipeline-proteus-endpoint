@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.3'
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'com.commercehub.gradle.plugin.avro' version '0.9.1'
 	id 'net.researchgate.release' version '2.6.0'
@@ -13,7 +13,7 @@ sourceCompatibility = '11'
 
 ext {
 	kafkaStarterVersion = "1.0.14-RELEASE"
-	avroPojosVersion = "0.68.153-SNAPSHOT"
+	avroPojosVersion = "0.97.187-SNAPSHOT"
 }
 
 configurations {
@@ -24,8 +24,8 @@ configurations {
 
 repositories {
 	maven { url "http://packages.confluent.io/maven/" }
-	maven { url "https://repo.corelogic.net/nexus/content/groups/m2/" }
 	maven { url "https://repo.corelogic.net/nexus/content/repositories/idap-release/"  }
+	maven { url 'https://repo.corelogic.net/nexus/content/groups/m2/'}
 
 	mavenCentral()
 }
@@ -34,7 +34,10 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.corelogic.ebs.billing.starters:spring-kafka-billing-event-pipeline-starter:${kafkaStarterVersion}")
 	implementation("com.corelogic.idap.avro.pojos:idap-pipeline-avro-pojos:${avroPojosVersion}")
+	implementation('com.corelogic.clp.starters:clp-config-starter:2.2.0')
 	compile('com.corelogic.clp.shared-components:clp-logging:1.5.1')
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")

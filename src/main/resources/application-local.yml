@@ -8,4 +8,4 @@ kafka-pipeline:
   keytab-file-in-base64: [your-keytab-file-in-base64]
   truststore-file-in-base64: [your-truststore-file-in-base64]
   truststore-location: [your-truststore-location]
-  truststore-password: [your-truststore-password]
+  truststore-password: r1ufh9jKB5ieRVFHuQQxyYU6P
